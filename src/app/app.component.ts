@@ -73,6 +73,7 @@ export class AppComponent implements OnInit {
 
   play(): void {
     setInterval(() => {
+      const newBoxMatrix = this.createBoxMatrix(this.rowNumber, this.columnNumber)
       for (let x = 0; x < this.rowNumber; x++) {
         for (let y = 0; y < this.columnNumber; y++) {
           const liveNeighbours = this.getLiveNeighbours(x, y);
@@ -89,12 +90,10 @@ export class AppComponent implements OnInit {
               isLive = true
             }
           }
-          this.boxMatrix[x][y] = isLive;
-
+          newBoxMatrix[x][y] = isLive;
         }
       }
+      this.boxMatrix = newBoxMatrix;
     }, 1000)
   }
-
-
 }
