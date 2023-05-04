@@ -1,4 +1,6 @@
-<app-toolbar></app-toolbar>
 <div class="content" role="main">
-<span>{{ title }} app is running!</span>
+  <div *ngFor="let x of rows" class="row">
+    <div *ngFor="let y of columns" class="box" [ngStyle]="{'background-color': this.getColor(x, y)}" (click)="this.swapColor(x, y)"></div>
+  </div>
+  <button (click)="this.play()">PLAY</button>
 </div>
